@@ -4,9 +4,9 @@ from flask import Flask, request
 import numpy as np
 from src.cleaning_text import Text
 from typing import Dict, Any
-#import sys, os
+import sys, os
 from database.postgres import Database
-#sys.path.append(os.path.realpath('../'))
+sys.path.append(os.path.realpath('../'))
 
 
 classifier_path = ('../model/pipe.pkl')
