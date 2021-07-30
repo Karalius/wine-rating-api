@@ -2,7 +2,7 @@ import json
 import pickle
 from flask import Flask, request
 import numpy as np
-from cleaning_text import Text
+from src.cleaning_text import Text
 from typing import Dict, Any
 #import sys, os
 from database.postgres import Database
