@@ -9,7 +9,7 @@ from database.postgres import Database
 sys.path.append(os.path.realpath('../'))
 
 
-classifier_path = ('../model/pipe.pkl')
+classifier_path = ('/app/model/pipe.pkl')
 
 with open(classifier_path, 'rb') as classifier:
     model = pickle.load(classifier)
