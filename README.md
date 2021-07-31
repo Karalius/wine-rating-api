@@ -6,12 +6,31 @@
 explain what 1-5 rating means
 
 ## Model
+To
+[Jupyter Notebook](https://github.com/Karalius/wine-rating-api/blob/main/model/model.ipynb)
 
-Link to jupyter notebook
-Pipeline
-Score
+
+Model's performance report:
+
+``` python
+              precision    recall  f1-score   support
+
+           1       0.50      0.54      0.52       112
+           2       0.42      0.58      0.49       156
+           3       0.51      0.46      0.49       130
+           4       0.89      0.41      0.56        80
+           5       0.81      0.70      0.75        87
+
+    accuracy                           0.54       565
+   macro avg       0.63      0.54      0.56       565
+weighted avg       0.58      0.54      0.55       565
+```
 
 ## POST
+URL: <https://wine-rating-api.herokuapp.com/predict>
+
+To interact with the model for wine raitng, use ```POST``` request:
+
 ```json
 curl -X POST https://wine-rating-api.herokuapp.com/predict -H 'Content-Type: application/json' -d
 {
@@ -21,13 +40,23 @@ curl -X POST https://wine-rating-api.herokuapp.com/predict -H 'Content-Type: app
    ]
 }
 ```
+
+Output:
+
 ```json
 {"Wine ratings": [2, 5]}
 ```
+
 ## GET
+URL: <https://wine-rating-api.herokuapp.com/inferences>
+
+To receive 10 latest inputs and outputs of the model use ```GET``` request:
+
 ```
 curl https://wine-rating-api.herokuapp.com/inferences
 ```
+
+Output:
 
 ```python
 [[24,
