@@ -9,7 +9,7 @@ from database.postgres import Database
 sys.path.append(os.path.realpath('../'))
 
 
-classifier_path = ('../model/pipe.pkl')
+classifier_path = ('/app/model/pipe.pkl')
 
 with open(classifier_path, 'rb') as classifier:
     model = pickle.load(classifier)
@@ -55,13 +55,6 @@ def inferences() -> Dict[str, Any]:
         return json.dumps(inferences)
     except Exception as error:
         return json.dumps({"error": "COULD NOT GET INFERENCES"}), 500
-
-# Short to do list
-# 4. Write test for cleaning_text and database classes
-# 5. Write good doctrings for both classes, double check type hints
-#    Write comments on model.ipynb
-# 6. New environment with good dependences + requirements.txt
-# 7. README
 
 
 if __name__ == "__main__":

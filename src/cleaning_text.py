@@ -13,6 +13,8 @@ class Text:
     """
     Takes a a list of descriptions as an argument and prepares it for the vectorization by:
 
+    Getting:
+        description between quotes
     Removing:
         stopwords,
         accented chars
@@ -22,7 +24,7 @@ class Text:
         word lemmatizer
 
     Returning:
-        list of clean text strings
+        list of strings
     """
 
 
@@ -37,6 +39,10 @@ class Text:
 
     @staticmethod
     def find_quote(text: str) -> str:
+        """
+        Finds a description between quotes, otherwise returns whole string
+        """
+
         matches = re.findall(r'\"(.+?)\"', text)
         if len(matches) != 0:
             return ",".join(matches)
@@ -74,12 +80,26 @@ class Text:
 
     @staticmethod
     def word_lemmatizer(regex: str) -> str:
+        """
+        Examples of lemmatization:
+
+        -> rocks : rock
+        -> corpora : corpus
+        -> better : good
+        """
+
         lemmatizer = WordNetLemmatizer()
         lem_text = " ".join([lemmatizer.lemmatize(i) for i in regex])
         return lem_text
 
 
     def clean_text(self) -> list:
+        """
+        Perform all static methods in order to clean a string and append it to a list.
+        Returns:
+            list of strings
+        """
+
         cleaned_entries = []
         
         for text in self.get_text:

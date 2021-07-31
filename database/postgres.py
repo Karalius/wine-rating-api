@@ -4,6 +4,20 @@ from typing import Union, Dict, Any
 
 
 class Database:
+    """
+    This class connects to Heroku hosted Postgres database.
+    
+    Methods:
+    --------------------------------------------------------------------------------
+    create_table: create a table in Postgres
+
+    get_last_ten_inferences: returns 10 last rows in the database
+
+    insert(input: json, output: json): inserts model's input and ouput in json format
+
+    drop_table: drops the table in the database
+    ---------------------------------------------------------------------------------
+    """
 
     def __init__(self) -> None:
         pass
