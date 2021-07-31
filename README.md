@@ -1,13 +1,35 @@
 # Wine rating API
 
+![alt text](https://www.totalwine.com/media/sys_master/cmsmedia/h4d/h16/8994184232990.jpg)
+
 ## Purpose
-....
+
+This project's focus is ```classifying wine```.
+
+It is based on expert ratings extracted from <https://www.totalwine.com/>. You can find the ```scraper``` here [Karalius/scrape-totalwine.com](https://github.com/Karalius/scrape-totalwine.com)
+
+
+
 ## Rating
-explain what 1-5 rating means
+The rating scale below represents the output of the model.
+
+![Wine Rating Scale](https://lh3.googleusercontent.com/proxy/yzBKLvnh2eyrhSvSnrGpgar26h2IfDe_ix1wFZrMtxav5Ni5mVKfe9eXmHzDAoLgw0ISY0I0hNihU1bq9sldex5lsalE1iAOa5yxRo78L61IeZfdlfCKYeknU2fdCV0tgQ)
+
+Example:
+```
+{"Wine ratings": [5]}
+
+# This rating suggests that the wine is excellent
+```
 
 ## Model
-To
-[Jupyter Notebook](https://github.com/Karalius/wine-rating-api/blob/main/model/model.ipynb)
+This model uses the following pipeline:
+
+```python
+Pipeline(steps=[('Tfidf', TfidfVectorizer()),
+                ('Rcf', RandomForestClassifier())]
+```
+To explore the model and data preparation, check [Jupyter Notebook](https://github.com/Karalius/wine-rating-api/blob/main/model/model.ipynb)
 
 
 Model's performance report:
