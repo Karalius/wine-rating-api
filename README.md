@@ -22,12 +22,7 @@ curl -X POST https://wine-rating-api.herokuapp.com/predict -H 'Content-Type: app
 }
 ```
 ```json
-{
-   "Wine ratings":[
-      2,
-      5
-   ]
-}
+{"Wine ratings": [2, 5]}
 ```
 ## GET
 ```
