@@ -16,7 +16,7 @@ Thus, you are able to receive a rating of an unknown wine by merely providing th
 ## Rating
 The rating scale below represents the output of the model.
 
-![Wine Rating Scale](https://i.imgur.com/vCV9XFc.jpg)
+<img src="https://i.imgur.com/BNdVP93.png" width="450" alt='Wine Rating Scale'>
 
 Example:
 ```
