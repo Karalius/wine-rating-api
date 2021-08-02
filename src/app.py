@@ -53,7 +53,7 @@ def inferences() -> Dict[str, Any]:
         database = Database()
         inferences = database.get_last_ten_inferences()
         return json.dumps(inferences)
-    except Exception as error:
+    except Exception:
         return json.dumps({"error": "COULD NOT GET INFERENCES"}), 500
 
 
