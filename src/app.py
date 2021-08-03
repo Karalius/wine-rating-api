@@ -4,9 +4,7 @@ from flask import Flask, request
 import numpy as np
 from src.cleaning_text import Text
 from typing import Dict, Any
-import sys, os
 from database.postgres import Database
-sys.path.append(os.path.realpath('../'))
 
 
 classifier_path = ('/app/model/pipe.pkl')
@@ -16,7 +14,7 @@ with open(classifier_path, 'rb') as classifier:
 
 
 app = Flask(__name__)
-
+database = Database()
 
 def __process_input(request_data: str) -> np.array:
     parsed_body = np.asarray(json.loads(request_data)["descriptions"])
@@ -34,7 +32,6 @@ def predict() -> Dict[str, Any]:
         input = json.loads(request.data)
         output = {"Wine ratings": predictions.tolist()}
         
-        database = Database()
         database.insert(json.dumps(input), json.dumps(output))
 
         return json.dumps(output)

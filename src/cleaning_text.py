@@ -49,9 +49,9 @@ class Text:
             return text
 
     @staticmethod
-    def remove_stopwords(qoute: str, is_lower_case=False) -> str:
+    def remove_stopwords(quote: str, is_lower_case=False) -> str:
         tokenizer = ToktokTokenizer()
-        tokens = tokenizer.tokenize(qoute)
+        tokens = tokenizer.tokenize(quote)
         tokens = [token.strip() for token in tokens]
 
         if is_lower_case:
@@ -103,8 +103,8 @@ class Text:
         cleaned_entries = []
 
         for text in self.get_text:
-            qoute = self.find_quote(text)
-            no_stopwords = self.remove_stopwords(qoute)
+            quote = self.find_quote(text)
+            no_stopwords = self.remove_stopwords(quote)
             clean_of_accented_chars = self.remove_accented_chars(no_stopwords)
             regex = self.word_regex_tokenizer(clean_of_accented_chars)
             lemmented = self.word_regex_tokenizer(regex)
