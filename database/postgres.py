@@ -8,15 +8,15 @@ class Database:
     This class connects to Heroku hosted Postgres database.
 
     Methods:
-    --------------------------------------------------------------------------------
-    create_table: create a table in Postgres
+    -------------------------------------------------------------
+    *create_table: create a table in Postgres
 
-    get_last_ten_inferences: returns 10 last rows in the database
+    *get_last_ten_inferences: returns 10 last rows in the database
 
-    insert(input: json, output: json): inserts model's input and ouput in json format
+    *insert: inserts model's input and ouput in json format
 
-    drop_table: drops the table in the database
-    ---------------------------------------------------------------------------------
+    *drop_table: drops the table in the database
+    -------------------------------------------------------------
     """
 
     def __init__(self) -> None:
@@ -33,46 +33,42 @@ class Database:
             print(error)
 
     def create_table(self) -> None:
-        cur = self.connect()
-        cur.execute(
-            """
-            CREATE TABLE IF NOT EXISTS inferences (
-                id serial PRIMARY KEY,
-                input json NOT NULL,
-                output json NOT NULL
-                );"""
-        )
-        cur.close()
+        with self.connect() as cur:
+            cur.execute(
+                """
+                CREATE TABLE IF NOT EXISTS inferences (
+                    id serial PRIMARY KEY,
+                    input json NOT NULL,
+                    output json NOT NULL
+                    );"""
+            )
 
     def get_last_ten_inferences(self) -> list:
-        cur = self.connect()
-        cur.execute(
-            """
-            SELECT *
-            FROM inferences
-            ORDER BY id DESC
-            LIMIT 10;"""
-        )
-        rows = cur.fetchall()
-        cur.close()
+        with self.connect() as cur:
+            cur.execute(
+                """
+                SELECT *
+                FROM inferences
+                ORDER BY id DESC
+                LIMIT 10;"""
+            )
+            rows = cur.fetchall()
         return rows
 
     def insert(self, input: Dict[str, Any], output: Dict[str, Any]) -> Union[None, str]:
         try:
-            cur = self.connect()
-            cur.execute(
-                f"INSERT INTO inferences(input, output)"
-                f"VALUES ('{input}', '{output}');"
-            )
-            cur.close()
+            with self.connect() as cur:
+                cur.execute(
+                    f"INSERT INTO inferences(input, output)"
+                    f"VALUES ('{input}', '{output}');"
+                )
         except SyntaxError as error:
             print(f"Invalid syntax within JSON {error}")
 
     def drop_table(self) -> None:
-        cur = self.connect()
-        cur.execute(
-            """
-            DROP TABLE IF EXISTS
-            inferences;"""
-        )
-        cur.close()
+        with self.connect() as cur:
+            cur.execute(
+                """
+                DROP TABLE IF EXISTS
+                inferences;"""
+            )
