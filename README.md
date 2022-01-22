@@ -6,7 +6,7 @@
 
 This project's focus is ```classifying wine```.
 
-It is based on expert ratings extracted from <https://www.totalwine.com/>. You can find the ```scraper``` [here](https://github.com/Karalius/scrape-totalwine.com).
+It is based on expert ratings extracted from <https://www.totalwine.com/>. Here is the link to the main [scraper](https://github.com/Karalius/scrape-totalwine.com).
 
 Wine rating is based on the ```description``` of wine.
 
